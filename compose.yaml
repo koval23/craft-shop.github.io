@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: craftShop  # Название вашей базы данных
+      MYSQL_USER: user           # Пользователь базы данных
+      MYSQL_PASSWORD: password   # Пароль пользователя
+      MYSQL_ROOT_PASSWORD: password  # Пароль для пользователя root
+    ports:
+      - "3307:3306"             # Проброс порта для доступа к MySQL
+    volumes:
+      - mysql_data:/var/lib/mysql  # Хранилище для данных MySQL
+    restart: always
+volumes:
+  mysql_data:
+    driver: local

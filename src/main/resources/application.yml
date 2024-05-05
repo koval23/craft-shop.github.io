@@ -1,0 +1,25 @@
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY_ID}
+      secret-key: ${AWS_SECRET_ACCESS_KEY}
+    region:
+      static: eu-north-1
+    stack:
+      auto: false
+
+application:
+  bucket:
+    name: craftshop
+
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 100B
+      max-file-size: 25MB
+      max-request-size: 50MB
+
+server:
+  port: 8080

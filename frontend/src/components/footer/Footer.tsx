@@ -51,7 +51,7 @@ const Footer: FC = () => {
           <nav>
             <NavLink to="/about">FAQ`s</NavLink>
             <NavLink to="/contacts">{t("footer.contactUs")}</NavLink>
-            <NavLink to="/help">{t("footer.emailUnsubscribe")}</NavLink>
+            <NavLink to="/about">{t("footer.emailUnsubscribe")}</NavLink>
             <NavLink to="/payment-info">{t("footer.paymentOptions")}</NavLink>
             <NavLink to="/shipping-services">
               {t("footer.shippingServices")}

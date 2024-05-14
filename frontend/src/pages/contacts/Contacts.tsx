@@ -8,8 +8,9 @@ import {
   FaPinterest,
   FaTiktok,
   FaTwitter,
-} from "react-icons/fa"
-import styles from "./Contacts.module.css"
+} from "react-icons/fa";
+import styles from './Contacts.module.css';
+
 
 const Contacts: FC = () => {
   const { t } = useTranslation("translation")
@@ -136,4 +137,4 @@ const Contacts: FC = () => {
   )
 }
 
-export default Contacts
+export default Contacts;

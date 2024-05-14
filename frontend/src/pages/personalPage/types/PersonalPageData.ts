@@ -1,4 +1,4 @@
-export default interface PersonalPageData {
+export interface PersonalPageData {
   firstName: string
   lastName: string
   phone: string

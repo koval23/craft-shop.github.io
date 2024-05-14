@@ -10,6 +10,8 @@ import PaymentInfo from "./pages/paymentInfo/PaymentInfo";
 import PersonalPage from "./pages/personalPage/PersonalPage";
 import Products from "./pages/products/Products";
 import Registration from "./pages/registration/Registration";
+import Contacts from "./pages/contacts/Contacts";
+import ShippingServices from "./pages/shippingServices/ShippingServices";
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
         <Route path="/personal-page" element={<PersonalPage />} />
         <Route path="/products" element={<Products />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/shipping-services" element={<ShippingServices />} />
         </Route>
       </Routes>
     </div>

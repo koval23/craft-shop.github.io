@@ -1,10 +1,12 @@
 package com.example.craftshop.user.dao;
 
-import com.example.craftshop.user.model.User;
+import com.example.craftshop.user.model.UserAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
 
-    User findByEmail(String email);
+public interface UserRepository extends JpaRepository<UserAccount, Long> {
+
+    Optional<UserAccount> findByEmail(String email);
 
 }

@@ -1,5 +1,6 @@
 package com.example.craftshop.user.model;
 
+import com.example.craftshop.user.dto.AddressDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "\"user\"")
-public class User {
+public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,13 +32,16 @@ public class User {
     @Lob
     @Column(name = "avatar", columnDefinition = "BLOB")
     private byte[] avatar;
+    @Embedded
+    private AddressDto addressDto;
 
-    public User() {
+    public UserAccount() {
         roles = new HashSet<>();
         roles.add(Role.USER);
+        addressDto = new AddressDto("",0,0,"","","");
     }
 
-    public User(String email, String name, String lastName, String password) {
+    public UserAccount(String email, String name, String lastName, String password) {
         this();
         this.email = email;
         this.name = name;

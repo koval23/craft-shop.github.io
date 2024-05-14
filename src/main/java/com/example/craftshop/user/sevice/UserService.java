@@ -11,7 +11,7 @@ public interface UserService {
 
     UserDto updateUser(String email, UserRegisterDto userRegisterDto);
 
-    UserRegisterDto findUser(String email);
+    UserDto getUser(String email);
 
     Iterable<UserDto> allUsers();
 

@@ -3,6 +3,7 @@ package com.example.craftshop.user.dto;
 import com.example.craftshop.user.model.Role;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Getter
@@ -17,5 +18,9 @@ public class UserDto {
     private byte[] avatar;
     @Singular
     private Set<Role> roles;
+
+    private String phone;
+    private LocalDate birthdate;
+    private AddressDto addressDto;
 
 }

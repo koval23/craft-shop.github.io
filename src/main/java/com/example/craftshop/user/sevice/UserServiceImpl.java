@@ -2,42 +2,50 @@ package com.example.craftshop.user.sevice;
 
 import com.example.craftshop.configuration.AvatarGenerator;
 import com.example.craftshop.user.dao.UserRepository;
-import com.example.craftshop.user.dto.UserRegisterDto;
 import com.example.craftshop.user.dto.UserDto;
-import com.example.craftshop.user.exceptions.UserAlreadyExistsException;
-import com.example.craftshop.user.model.User;
+import com.example.craftshop.user.dto.UserRegisterDto;
+import com.example.craftshop.user.dto.exceptions.UserExistsException;
+import com.example.craftshop.user.dto.exceptions.UserNotFoundException;
+import com.example.craftshop.user.model.Role;
+import com.example.craftshop.user.model.UserAccount;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, CommandLineRunner {
 
-    final UserRepository userRepository;
-    final ModelMapper modelMapper;
+    private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public boolean addUser(UserRegisterDto userRegisterDto) {
-        if (userRegisterDto.getEmail() == null || userRegisterDto.getEmail().trim().isEmpty()) {
-            throw new IllegalArgumentException("Email must not be null or empty");
-        }
-        if (userRepository.findByEmail(userRegisterDto.getEmail()) != null) {
-            throw new UserAlreadyExistsException("User with email " + userRegisterDto.getEmail() + " already exists");
-        }
-        if (userRegisterDto.getLastName() == null || userRegisterDto.getLastName().trim().isEmpty() ||
-                userRegisterDto.getName() == null || userRegisterDto.getName().trim().isEmpty() ||
-                userRegisterDto.getPassword() == null || userRegisterDto.getPassword().trim().isEmpty()) {
-            throw new IllegalArgumentException("All mandatory fields (name, lastName, password) must be provided");
-        }
-        User user = modelMapper.map(userRegisterDto, User.class);
-        user.setAvatar(generateAndSetAvatar(userRegisterDto.getName(), userRegisterDto.getLastName()));
-        userRepository.save(user);
+
+        userRepository.findByEmail(userRegisterDto.getEmail())
+                .ifPresent(userAccount -> {
+                    throw new UserExistsException();
+                });
+
+        String password = passwordEncoder.encode(userRegisterDto.getPassword());
+        userRegisterDto.setPassword(password);
+
+        UserAccount userAccount = modelMapper.map(userRegisterDto, UserAccount.class);
+        userAccount.setAvatar(generateAndSetAvatar(userRegisterDto.getName(), userRegisterDto.getLastName()));
+        userRepository.save(userAccount);
         return true;
     }
 
+    @Override
+    public UserDto getUser(String email) {
+        UserAccount userAccount = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
+        return modelMapper.map(userAccount, UserDto.class);
+    }
 
     @Override
     public UserRegisterDto removeUser(String email) {
@@ -50,14 +58,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserRegisterDto findUser(String email) {
-        return null;
-    }
-
-    @Override
     public Iterable<UserDto> allUsers() {
         return userRepository.findAll().stream()
-                .map(user -> modelMapper.map(user, UserDto.class))
+                .map(userAccount -> modelMapper.map(userAccount, UserDto.class))
                 .toList();
     }
 
@@ -68,6 +71,17 @@ public class UserServiceImpl implements UserService {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        if (userRepository.findByEmail("admin@gmail.com").isPresent()) {
+            String password = passwordEncoder.encode("admin");
+            UserAccount userAccount = new UserAccount("admin@gmail.com", "admin", "admin", password);
+            userAccount.addRole(Role.MODERATOR.name());
+            userAccount.addRole(Role.ADMINISTRATOR.name());
+            userRepository.save(userAccount);
         }
     }
 }

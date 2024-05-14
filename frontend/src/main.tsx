@@ -7,6 +7,7 @@ import "./index.css"
 import { BrowserRouter } from "react-router-dom"
 import { I18nextProvider } from "react-i18next"
 import i18next from "./features/i18next.ts/i18next"
+import { ToastContainer } from "react-toastify"
 
 const container = document.getElementById("root")
 
@@ -17,6 +18,7 @@ if (container) {
     <React.StrictMode>
       <BrowserRouter>
         <I18nextProvider i18n={i18next}>
+          <ToastContainer position="top-center" autoClose={4000} />
           <Provider store={store}>
             <App />
           </Provider>

@@ -64,5 +64,12 @@
       "dataOfBirth": "Geburtsdatum",
       "city": "Stadt",
       "country": "Land"
+    },
+    "toasty": {
+      "contactUpdated" : "Kontaktdaten aktualisiert",
+      "noUpdatedContact" : "Fehler beim Aktualisieren der Kontaktdaten. Bitte versuchen Sie es später erneut",
+      "personalDataDeleted" : "Persönliche Daten gelöscht",
+      "personalDataNoDeleted" : "Persönliche Daten nicht gelöscht. Bitte versuchen Sie es später erneut",
+      "login" : "Sie haben sich erfolgreich angemeldet. Ihnen steht der volle Funktionsumfang der Website zur Verfügung."
     }
   }

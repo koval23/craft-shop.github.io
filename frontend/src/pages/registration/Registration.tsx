@@ -1,15 +1,13 @@
-import type { FC} from "react";
-import type React from "react";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import type RegistrationData from "./types/RegistrationData";
-import styles from "./Registration.module.css";
-
+import type { FC } from "react"
+import type React from "react"
+import { useState } from "react"
+import { useTranslation } from "react-i18next"
+import type RegistrationData from "./types/RegistrationData"
+import styles from "./Registration.module.css"
 
 const Registration: FC = () => {
-  const { t } = useTranslation("translation");
-  const [showPassword, setShowPassword] = useState(false);
- 
+  const { t } = useTranslation("translation")
+  const [showPassword, setShowPassword] = useState(false)
 
   const [formData, setFormData] = useState<RegistrationData>({
     firstName: "",
@@ -17,33 +15,31 @@ const Registration: FC = () => {
     email: "",
     password: "",
     confirmPassword: "",
-  });
+  })
 
   const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
+    setShowPassword(!showPassword)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
+    const { name, value } = e.target
+    setFormData(prevState => ({
       ...prevState,
       [name]: value,
-    }));
-  };
-
-
+    }))
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
     if (formData.password !== formData.confirmPassword) {
-      alert(t("registration.passwordMismatch"));
-      return;
+      alert(t("registration.passwordMismatch"))
+      return
     }
-    
-    const { confirmPassword, ...registrationData } = formData;
-    console.log("Registration Data:", registrationData);
-    alert("Registration successful!");
-  };
+
+    const { confirmPassword, ...registrationData } = formData
+    console.log("Registration Data:", registrationData)
+    alert("Registration successful!")
+  }
 
   return (
     <div className={styles.bigContainerRegistration}>
@@ -118,7 +114,7 @@ const Registration: FC = () => {
                 {t("registration.requiredFields")}
               </p>
             </div>
-            
+
             <button
               type="submit"
               className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded  "
@@ -129,7 +125,7 @@ const Registration: FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Registration;
+export default Registration

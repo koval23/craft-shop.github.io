@@ -8,6 +8,8 @@ import Careers from "./pages/careers/Careers";
 import OrderServices from "./pages/orderServices/OrderServices";
 import PaymentInfo from "./pages/paymentInfo/PaymentInfo";
 import PersonalPage from "./pages/personalPage/PersonalPage";
+import Products from "./pages/products/Products";
+import Registration from "./pages/registration/Registration";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/services" element={<OrderServices />} />
         <Route path="/payment-info" element={<PaymentInfo />} />
         <Route path="/personal-page" element={<PersonalPage />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/registration" element={<Registration />} />
         </Route>
       </Routes>
     </div>

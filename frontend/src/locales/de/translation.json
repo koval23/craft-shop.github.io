@@ -1,0 +1,68 @@
+{
+    "header": {
+      "home": "Startseite",
+      "products": "Produkte",
+      "services": "Dienstleistungen",
+      "contacts": "Kontakte",
+      "about": "Über uns",
+      "registration": "Registrierung",
+      "login": "Anmeldung"
+    },
+    "footer": {
+      "findUsOn": "Finden Sie uns auf",
+      "mayHelpYou": "Können wir Ihnen helfen",
+      "aboutCompany": "Über das Unternehmen",
+      "contactUs": "Kontaktieren Sie uns",
+      "emailUnsubscribe": "E-Mail abmelden",
+      "paymentOptions": "Zahlungsoptionen",
+      "shippingServices": "Versanddienstleistungen",
+      "aboutHarmanCoal": "Über Harman Coal",
+      "careers": "Karriere",
+      "contacts": "Kontakte",
+      "signUpUpdates": "Melden Sie sich für Updates von Harman Coal an.",
+      "emailFormText": "Geben Sie unten Ihre E-Mail-Adresse ein, um unseren Newsletter mit Zugang zu unseren neuesten Kollektionen, Veranstaltungen und Initiativen zu erhalten. Weitere Details dazu",
+      "emailAddress": "E-Mail-Adresse",
+      "subscribing": "Vielen Dank für die Anmeldung mit"
+    },
+    "contacts" : {
+      "name": "Vorname",
+      "surname": "Nachname",
+      "email": "E-Mail",
+      "feedbackForm" : "Rückmeldungsformular, wir beantworten alle Ihre Fragen",
+      "yourQuestion" : "Ihre Frage",
+      "send" : "Senden",
+      "ourSocialMedia" : "Unsere sozialen Medien",
+      "fillAllFields" : "Bitte füllen Sie alle Felder aus",
+      "thankQuestion" : "Vielen Dank für Ihre Frage!"
+    },
+    "registration" : {
+      "registration" : "Sign up",
+      "password" : "Password",
+      "notRobot"  : "I'm not a robot",
+      "passwordMismatch": "Passwort wiederholen",
+      "passwordNotSecure": "Das Passwort ist nicht sicher. Bitte verwenden Sie ein Passwort mit mindestens 8 Zeichen.",
+      "repeatPassword" : "Passwörter stimmen nicht überein",
+      "requiredFields": " * - Pflichtfelder",
+      "showPassword": "Passwort anzeigen",
+      "pleaseVerify" : "Bitte bestätigen Sie, dass Sie ein Mensch sind!",
+      "signToAccount" : "Anmelden",
+      "signIn" : "Anmelden"
+    },
+    "personalPage": {
+      "viewEditAccount": "Ihren Account anzeigen oder bearbeiten",
+      "reset": "Zurücksetzen",
+      "update": "Aktualisieren",
+      "personalData": "Persönliche Daten",
+      "updatePersonalData": "Aktualisieren Sie Ihre persönlichen Daten",
+      "emailHeader": "Ihre Login-E-Mail-Adresse ",
+      "emailFooter": " (kann nicht geändert werden)",
+      "name": "Vorname",
+      "phone": "Telefon",
+      "street": "Straße",
+      "code": " Postleitzahl",
+      "lastName": "Nachname",
+      "dataOfBirth": "Geburtsdatum",
+      "city": "Stadt",
+      "country": "Land"
+    }
+  }

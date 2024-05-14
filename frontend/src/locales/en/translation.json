@@ -1,0 +1,68 @@
+{
+    "header": {
+      "home": "Home",
+      "products": "Products",
+      "services": "Services",
+      "contacts": "Contacts",
+      "about": "About",
+      "registration": "Registration",
+      "login": "Login"
+    },
+    "footer": {
+      "findUsOn": "Find us on",
+      "mayHelpYou": "May we help you",
+      "aboutCompany": "About company",
+      "contactUs": "Contact us",
+      "emailUnsubscribe": "Email unsubscribe",
+      "paymentOptions": "Payment options",
+      "shippingServices": "Shipping services",
+      "aboutHarmanCoal": "About Harman Coal",
+      "careers": "Careers",
+      "contacts": "Contacts",
+      "signUpUpdates": "Sign up for Harman Coal updates.",
+      "emailFormText": "By entering your email address below, you consent to receiving our newsletter with access to our latest collections, events, and initiatives. More details on this",
+      "emailAddress": "Email address",
+      "subscribing": "Thank you for subscribing with"
+    },
+    "contacts" : {
+      "name": "Name",
+      "surname": "Surname",
+      "email": "Email",
+      "feedbackForm" : "Feedback form, we'll answer all your questions",
+      "yourQuestion" : "Your question",
+      "send" : "Send",
+      "ourSocialMedia" : "Our social media",
+      "fillAllFields" : "Please fill in all fields",
+      "thankQuestion" : "Thank you for your question!"
+    },
+    "registration" : {
+      "registration" : "Sign up",
+      "password" : "Password",
+      "notRobot"  : "I'm not a robot",
+      "passwordMismatch": "Passwords do not match",
+      "passwordNotSecure": "The password is not secure, please use a password that is at least 8 characters long.",
+      "repeatPassword" : "Repeat password",
+      "requiredFields": "* - required fields",
+      "showPassword": "Show password",
+      "pleaseVerify" : "Please verify that you are a human!",
+      "signToAccount" : "Sign in to your account",
+      "signIn" : "Sign in"
+    },
+    "personalPage": {
+      "viewEditAccount": "View or Edit Your Account",
+      "reset": "Reset",
+      "update": "Update",
+      "personalData": "Personal Data",
+      "updatePersonalData": "Update Your Personal Data",
+      "emailHeader": "Your Login Email Address ",
+      "emailFooter": " (cannot be changed)",
+      "name": "First Name",
+      "phone": "Phone",
+      "street": "Street",
+      "code": "Postal Code",
+      "lastName": "Last Name",
+      "dataOfBirth": "Date of Birth",
+      "city": "City",
+      "country": "Country"
+    }
+  }

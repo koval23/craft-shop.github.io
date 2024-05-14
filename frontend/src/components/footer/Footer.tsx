@@ -2,8 +2,8 @@ import type { FC } from "react"
 import styles from "./Footer.module.css"
 import { useTranslation } from "react-i18next"
 import { NavLink } from "react-router-dom"
-import logoFooter from "../../assets/logoFooter.jpeg"
-import EmailForm from "../../features/form/emailForm/EmailForm"
+import logoFooter from "../../assets/logoFooter.jpeg";
+import EmailForm from "../../features/form/EmailForm";
 
 const Footer: FC = () => {
   const { t } = useTranslation("translation")

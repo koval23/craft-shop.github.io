@@ -90,13 +90,13 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
   }
 
   return (
-    <div className="addCardContainer">
+   <div className="addCardContainer">
       <div className="container mx-auto p-4">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col md:flex-row bg-black shadow-md rounded-lg p-6"
         >
-          <div className="flex flex-col md:flex-row md:items-start">
+          <div className="flex flex-col md:flex-row md:items-start w-full">
             <div className="flex flex-col items-center md:w-1/3">
               <div className="mb-4">
                 <input
@@ -119,7 +119,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
               </div>
             </div>
             <div className="flex flex-col md:w-1/3 md:ml-4 space-y-4">
-              {[1, 2, 3].map(index => (
+              {[1, 2, 3].map((index) => (
                 <div key={index} className="flex-1">
                   <input
                     type="file"
@@ -129,7 +129,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                     className="hidden"
                   />
                   <label htmlFor={`file-upload-${index}`} className={styles.addImage}>
-                    Image 
+                    Image
                   </label>
                   {urlPreviews[index] && (
                     <img
@@ -141,9 +141,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 </div>
               ))}
             </div>
-            <div className={styles.containerAddInfoImage}>
-            <div className="flex flex-col md:w-1/3 md:ml-4">
-              
+            <div className="flex flex-col md:w-1/3 md:ml-4 space-y-4">
               <input
                 type="text"
                 name="title"
@@ -176,7 +174,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 value={formData.dimensions}
                 onChange={handleChange}
                 placeholder="Product Dimensions"
-                className="mb-4 p-2 bg-black border border-gray-300 rounded-md"
+                className="mb-4 p-2 bg-black text-white border border-gray-300 rounded-md"
                 required
               />
               <input
@@ -185,7 +183,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 value={formData.material}
                 onChange={handleChange}
                 placeholder="Product Material"
-                className="mb-4 p-2 bg-black border border-gray-300 rounded-md"
+                className="mb-4 p-2 bg-black text-white border border-gray-300 rounded-md"
                 required
               />
               <input
@@ -194,7 +192,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 value={formData.price}
                 onChange={handleChange}
                 placeholder="Product Price"
-                className="mb-4 p-2 bg-black border border-gray-300 rounded-md"
+                className="mb-4 p-2 bg-black text-white border border-gray-300 rounded-md"
                 required
               />
               <button
@@ -203,19 +201,18 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
               >
                 Add Product
               </button>
-            </div>
+              <button
+                onClick={onClose}
+                className="mt-4 bg-yellow-500 text-white p-2 rounded-md hover:bg-yellow-600 transition duration-200"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </form>
-        <button
-          onClick={onClose}
-          className="mt-4 bg-yellow-500 text-white p-2 rounded-md hover:bg-blue-600 transition duration-300"
-        >
-          Cancel
-        </button>
       </div>
     </div>
-   
   );
 };
+
 export default StoreProductCreator

@@ -10,10 +10,14 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import styles from './Contacts.module.css';
+import { useAppDispatch } from "../../app/hooks";
+import { toast } from "react-toastify";
+import { submitForm } from "./contactsSlice";
 
 
 const Contacts: FC = () => {
-  const { t } = useTranslation("translation")
+  const { t } = useTranslation("translation");
+  const dispatch = useAppDispatch();
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -44,14 +48,23 @@ const Contacts: FC = () => {
         alert(t("contacts.fillAllFields"))
         return
       }
-      console.log("Form data:", formData)
-      alert(t("contacts.thankQuestion"))
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        question: "",
+      console.log("Contacts: ", formData)
+      dispatch(submitForm(formData))
+      .unwrap()
+      .then(() => {
+        toast.success(t('contacts.thankQuestion'));
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          question: "",
+        })
       })
+      .catch(() => {
+        toast.error(t("toasty.noUpdatedContact"));
+      });
+  
+     
     } catch (error) {
       alert(error)
     }

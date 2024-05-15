@@ -1,15 +1,21 @@
 import type { FC } from "react"
 import type React from "react"
-import { useState } from "react"
-import styles from "./PersonalPage.module.css"
+import { useEffect, useState } from "react"
+import styles from "./styles/PersonalPage.module.css"
 import { useTranslation } from "react-i18next"
-import type PersonalPageData from "./types/PersonalPageData"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { deleteUser, selectUser, updateUser } from "./userSlice"
+import type { User } from "./types/PersonalPageData"
+import { toast } from "react-toastify"
 
 const PersonalPage: FC = () => {
   const today = new Date().toISOString().split("T")[0]
   const { t } = useTranslation("translation")
+  const user = useAppSelector(selectUser)
+  const dispatch = useAppDispatch()
 
-  const [formData, setFormData] = useState<PersonalPageData>({
+  const [formData, setFormData] = useState<User>({
+    id: 0,
     firstName: "",
     lastName: "",
     phone: "",
@@ -17,8 +23,14 @@ const PersonalPage: FC = () => {
     street: "",
     city: "",
     country: "",
-    postalCode: 0,
+    postalCode: "",
   })
+
+  useEffect(() => {
+    if (user) {
+      setFormData(user)
+    }
+  }, [user])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -27,7 +39,26 @@ const PersonalPage: FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log("Personal Page:", formData)
+    console.log("Personal Page: ", formData)
+    dispatch(updateUser(formData))
+      .unwrap()
+      .then(() => {
+        toast.info(t("toasty.contactUpdated"))
+      })
+      .catch(() => {
+        toast.error(t("toasty.noUpdatedContact"))
+      })
+  }
+
+  const handleDeleteUser = () => {
+    dispatch(deleteUser())
+      .unwrap()
+      .then(() => {
+        toast.success(t("toasty.personalDataDeleted"))
+      })
+      .catch(() => {
+        toast.error(t("toasty.personalDataNoDeleted"))
+      })
   }
 
   return (
@@ -39,10 +70,18 @@ const PersonalPage: FC = () => {
               {t("personalPage.viewEditAccount")}
             </h2>
             <div>
-              <button className="px-4 py-2 border rounded text-gray-600 mr-2">
+              <button
+                type="button"
+                onClick={handleDeleteUser}
+                className="px-6 py-2 border rounded text-gray-600 mr-2"
+              >
                 {t("personalPage.reset")}
               </button>
-              <button className="px-4 py-2 border rounded bg-blue-500 text-white">
+              <button
+                type="submit"
+                form="updateForm"
+                className="px-4 py-2 border rounded bg-blue-500 text-white"
+              >
                 {t("personalPage.update")}
               </button>
             </div>
@@ -135,10 +174,18 @@ const PersonalPage: FC = () => {
         </form>
 
         <div className="mt-4 text-right">
-          <button className="px-4 py-2 border rounded text-gray-600 mr-2">
+          <button
+            type="button"
+            onClick={handleDeleteUser}
+            className="px-6 py-2 border rounded text-gray-600 mr-2"
+          >
             {t("personalPage.reset")}
           </button>
-          <button className="px-4 py-2 border rounded bg-blue-500 text-white">
+          <button
+            type="submit"
+            form="updateForm"
+            className="px-4 py-2 border rounded bg-blue-500 text-white"
+          >
             {t("personalPage.update")}
           </button>
         </div>

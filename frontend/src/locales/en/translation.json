@@ -64,5 +64,12 @@
       "dataOfBirth": "Date of Birth",
       "city": "City",
       "country": "Country"
+    },
+    "toasty": {
+      "contactUpdated" : "Contact details updated",
+      "noUpdatedContact" : "Failed to update contact details. Please try again later",
+      "personalDataDeleted" : "Personal data deleted",
+      "personalDataNoDeleted" : "Personal data not deleted. Please try again later",
+      "login" : "You have successfully logged in. You have access to all website functionality."
     }
   }

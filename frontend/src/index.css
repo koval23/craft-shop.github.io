@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.Toastify__toast--success {
+  background-color: #b9f2bb !important;
+  color: #fff !important;
+}
+
+.Toastify__toast--error {
+  background-color: #fbc4c0 !important;
+  color: #fff !important;
+}
+
+.Toastify__toast--warning {
+  background-color: #e3fc43 !important;
+  color: #fff !important;
+}
+
+.Toastify__toast--info {
+  background-color: #4fabf6 !important;
+  color: #fff !important;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

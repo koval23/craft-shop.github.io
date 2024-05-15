@@ -1,4 +1,5 @@
-export interface PersonalPageData {
+export interface User {
+  id: number
   firstName: string
   lastName: string
   phone: string
@@ -6,5 +7,7 @@ export interface PersonalPageData {
   street: string
   city: string
   country: string
-  postalCode: number
+  postalCode: string
 }
+
+

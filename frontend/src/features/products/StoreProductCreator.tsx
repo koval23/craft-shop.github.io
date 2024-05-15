@@ -5,10 +5,17 @@ import type { StoreProduct } from "./types/StoreProduct"
 import { toast } from "react-toastify"
 import { addProduct } from "./storeProductSlice"
 import styles from "./styles/StoreProductCreator.module.css"
+import { useTranslation } from "react-i18next"
 
 type FormElement = HTMLInputElement | HTMLTextAreaElement
 
-const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => {
+const StoreProductCreator: React.FC = ({
+  onClose,
+}: {
+  onClose: () => void
+}) => {
+  const { t } = useTranslation("translation")
+
   const dispatch = useAppDispatch()
   const [urlPreviews, setUrlPreviews] = useState<(string | null)[]>([
     null,
@@ -36,18 +43,18 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
     }))
   }
 
-  const handleFileChange = (index: number) => (e: React. ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      const url = URL.createObjectURL(file);
-      setUrlPreviews((prev) => {
-        const newPreviews = [...prev];
-        newPreviews[index] = url;
-        return newPreviews;
-      });
+  const handleFileChange =
+    (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files && e.target.files[0]) {
+        const file = e.target.files[0]
+        const url = URL.createObjectURL(file)
+        setUrlPreviews(prev => {
+          const newPreviews = [...prev]
+          newPreviews[index] = url
+          return newPreviews
+        })
+      }
     }
-  };
-
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -81,7 +88,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
             price: "",
             imageFiles: [null, null, null, null],
           })
-          onClose();
+          onClose()
           setUrlPreviews([null, null, null, null])
         })
     } catch (error) {
@@ -90,7 +97,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
   }
 
   return (
-   <div className="addCardContainer">
+    <div className="addCardContainer">
       <div className="container mx-auto p-4">
         <form
           onSubmit={handleSubmit}
@@ -107,7 +114,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                   className="hidden"
                 />
                 <label htmlFor="file-upload-main" className={styles.addImage}>
-                  Image
+                  {t("storeProduct.file")}
                 </label>
                 {urlPreviews[0] && (
                   <img
@@ -119,7 +126,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
               </div>
             </div>
             <div className="flex flex-col md:w-1/3 md:ml-4 space-y-4">
-              {[1, 2, 3].map((index) => (
+              {[1, 2, 3].map(index => (
                 <div key={index} className="flex-1">
                   <input
                     type="file"
@@ -128,8 +135,11 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                     id={`file-upload-${index}`}
                     className="hidden"
                   />
-                  <label htmlFor={`file-upload-${index}`} className={styles.addImage}>
-                    Image
+                  <label
+                    htmlFor={`file-upload-${index}`}
+                    className={styles.addImage}
+                  >
+                    {t("storeProduct.file")}
                   </label>
                   {urlPreviews[index] && (
                     <img
@@ -147,7 +157,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
-                placeholder="Product Title"
+                placeholder={t("storeProduct.title")}
                 className="mb-4 p-2 bg-black text-white border border-gray-300 rounded-md"
                 required
               />
@@ -155,7 +165,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                placeholder="Product Description"
+                placeholder={t("storeProduct.description")}
                 className="textarea-underline mb-4 p-2 bg-black text-white rounded-none"
                 required
               />
@@ -164,7 +174,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
-                placeholder="Product Size"
+                placeholder={t("storeProduct.size")}
                 className="mb-4 p-2 bg-black text-white border border-gray-300 rounded-md"
                 required
               />
@@ -173,7 +183,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 name="dimensions"
                 value={formData.dimensions}
                 onChange={handleChange}
-                placeholder="Product Dimensions"
+                placeholder={t("storeProduct.dimensions")}
                 className="mb-4 p-2 bg-black text-white border border-gray-300 rounded-md"
                 required
               />
@@ -182,7 +192,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 name="material"
                 value={formData.material}
                 onChange={handleChange}
-                placeholder="Product Material"
+                placeholder={t("storeProduct.material")}
                 className="mb-4 p-2 bg-black text-white border border-gray-300 rounded-md"
                 required
               />
@@ -191,7 +201,7 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
-                placeholder="Product Price"
+                placeholder={t("storeProduct.price")}
                 className="mb-4 p-2 bg-black text-white border border-gray-300 rounded-md"
                 required
               />
@@ -199,20 +209,20 @@ const StoreProductCreator: React.FC = ({ onClose }: { onClose: () => void }) => 
                 type="submit"
                 className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition duration-300"
               >
-                Add Product
+                {t("storeProduct.buttonAddCard")}
               </button>
               <button
                 onClick={onClose}
                 className="mt-4 bg-yellow-500 text-white p-2 rounded-md hover:bg-yellow-600 transition duration-200"
               >
-                Cancel
+                {t("storeProduct.closeForm")}
               </button>
             </div>
           </div>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default StoreProductCreator

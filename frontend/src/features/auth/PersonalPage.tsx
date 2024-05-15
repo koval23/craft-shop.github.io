@@ -16,10 +16,10 @@ const PersonalPage: FC = () => {
 
   const [formData, setFormData] = useState<User>({
     id: 0,
-    firstName: "",
+    name: "",
     lastName: "",
     phone: "",
-    birthDate: "",
+    birthdate: "",
     street: "",
     city: "",
     country: "",
@@ -104,7 +104,7 @@ const PersonalPage: FC = () => {
               type="text"
               name="firstName"
               placeholder={t("personalPage.name")}
-              value={formData.firstName}
+              value={formData.name}
               onChange={handleChange}
               className="w-full px-3 py-2 border rounded "
             />
@@ -147,7 +147,7 @@ const PersonalPage: FC = () => {
               type="date"
               name="birthDate"
               placeholder={t("personalPage.dataOfBirth")}
-              value={formData.birthDate}
+              value={formData.birthdate}
               onChange={handleChange}
               className="w-full px-3 py-2 border rounded"
               max={today}

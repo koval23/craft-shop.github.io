@@ -2,6 +2,7 @@ import { createAppSlice } from "../../app/createAppSlice"
 import type { User } from "../../features/auth/types/PersonalPageData"
 import type { UserState } from "./types/UserState"
 import {
+  activateAccountUser,
   deletePersonalPageUser,
   loginUser,
   personalPageUser,
@@ -12,6 +13,7 @@ import type { RegistrationData } from "./types/RegistrationData"
 
 const initialState: UserState = {
   user: null,
+  status: "idle",
   loginData: null,
   registrationData: null,
   loading: false,
@@ -99,6 +101,24 @@ export const userSlice = createAppSlice({
         },
       },
     ),
+    activateAccount: create.asyncThunk(
+      async (validationCode:  string) => {
+        const response = await activateAccountUser(validationCode)
+        return response
+      },
+      {
+        pending: state => {
+          state.loading = true
+          state.error = null
+        },
+        fulfilled: (state, action) => {
+          state.loading = false
+        },
+        rejected: state => {
+          state.loading = false
+        },
+      },
+    ),
   }),
 
   selectors: {
@@ -106,6 +126,6 @@ export const userSlice = createAppSlice({
   },
 })
 
-export const { updateUser, login, registration, deleteUser } = userSlice.actions
+export const { updateUser, login, registration, deleteUser, activateAccount} = userSlice.actions
 
 export const { selectUser } = userSlice.selectors

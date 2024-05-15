@@ -2,21 +2,21 @@ import type { FC } from "react"
 import type React from "react"
 import { useState } from "react"
 import type { LoginData } from "./types/LoginData"
-import styles from './styles/Login.module.css';
+import styles from "./styles/Login.module.css"
 import { useTranslation } from "react-i18next"
-import { login } from "./userSlice";
-import { useAppDispatch } from "../../app/hooks";
-import { toast } from "react-toastify";
+import { login } from "./userSlice"
+import { useAppDispatch } from "../../app/hooks"
+import { toast } from "react-toastify"
 
 const Login: FC = () => {
   const { t } = useTranslation("translation")
   const [formData, setFormData] = useState<LoginData>({
     email: "",
     password: "",
-  });
+  })
 
-  const [showPassword, setShowPassword] = useState(false);
-  const dispatch = useAppDispatch();
+  const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useAppDispatch()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -24,24 +24,24 @@ const Login: FC = () => {
       ...prevState,
       [name]: value,
     }))
-  };
+  }
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword)
-  };
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log("Login:", formData)
     dispatch(login(formData))
-    .unwrap()
-    .then(() => {
-      toast.info(t("toasty.login"));
-    })
-    .catch(() => {
-      toast.error(t("toasty.noUpdatedContact"));
-    });
-};
+      .unwrap()
+      .then(() => {
+        toast.info(t("toasty.login"))
+      })
+      .catch(() => {
+        toast.error(t("toasty.noUpdatedContact"))
+      })
+  }
 
   return (
     <div className={styles.loginFormContainer}>

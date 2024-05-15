@@ -7,7 +7,7 @@ export interface User {
   street: string
   city: string
   country: string
-  postalCode: number
+  postalCode: string
 }
 
 

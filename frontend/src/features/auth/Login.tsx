@@ -42,6 +42,7 @@ const Login: FC = () => {
       toast.error(t("toasty.noUpdatedContact"));
     });
 };
+
   return (
     <div className={styles.loginFormContainer}>
       <div className="flex items-center justify-center bg-gray-50 px-4">

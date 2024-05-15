@@ -6,3 +6,8 @@
 .main {
     min-height: 100vh; 
 }
+@media screen and (max-width: 768px) {
+    .main {
+  width: 100%;
+    }
+  }

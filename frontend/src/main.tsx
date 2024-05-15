@@ -6,7 +6,7 @@ import { store } from "./app/store"
 import "./index.css"
 import { BrowserRouter } from "react-router-dom"
 import { I18nextProvider } from "react-i18next"
-import i18next from "./features/i18next.ts/i18next"
+import i18next from "./i18next.ts/i18next"
 import { ToastContainer } from "react-toastify"
 
 const container = document.getElementById("root")

@@ -8,10 +8,11 @@ import Careers from "./pages/careers/Careers"
 import OrderServices from "./pages/orderServices/OrderServices"
 import PaymentInfo from "./pages/paymentInfo/PaymentInfo"
 import PersonalPage from "./features/auth/PersonalPage"
-import Products from "./pages/products/Products"
+import Products from "./features/products/Products"
 import Registration from "./features/auth/Registration"
 import Contacts from "./pages/contacts/Contacts"
 import ShippingServices from "./pages/shippingServices/ShippingServices"
+import StoreProductCreator from "./features/products/StoreProductCreator"
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/registration" element={<Registration />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/shipping-services" element={<ShippingServices />} />
+          <Route path="/store" element={<StoreProductCreator />} />
         </Route>
       </Routes>
     </div>

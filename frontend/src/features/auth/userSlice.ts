@@ -1,22 +1,22 @@
 import { createAppSlice } from "../../app/createAppSlice"
-import type {
-  User,
-} from "../../features/auth/types/PersonalPageData"
+import type { User } from "../../features/auth/types/PersonalPageData"
 import type { UserState } from "./types/UserState"
-import { deletePersonalPageUser, loginUser, personalPageUser, registerUser } from "./api"
-import type { LoginData } from "./types/LoginData";
-import { RegistrationData } from "./types/RegistrationData";
+import {
+  deletePersonalPageUser,
+  loginUser,
+  personalPageUser,
+  registerUser,
+} from "./api"
+import type { LoginData } from "./types/LoginData"
+import type { RegistrationData } from "./types/RegistrationData"
 
 const initialState: UserState = {
-    user: null,
-    loginData: null,
-    registrationData: null,
-    loading: false,
-    error: null,
-  };
-
-
-  
+  user: null,
+  loginData: null,
+  registrationData: null,
+  loading: false,
+  error: null,
+}
 
 export const userSlice = createAppSlice({
   name: "user",
@@ -81,7 +81,7 @@ export const userSlice = createAppSlice({
       },
     ),
     deleteUser: create.asyncThunk(
-      async (_) => {
+      async _ => {
         const response = await deletePersonalPageUser()
         return response
       },

@@ -9,10 +9,10 @@ import { useTranslation } from "react-i18next"
 
 type FormElement = HTMLInputElement | HTMLTextAreaElement
 type Props = {
-  onClose: () => void;
-};
+  onClose: () => void
+}
 
-const StoreProductCreator: React.FC <Props> = ({onClose}) => {
+const StoreProductCreator: React.FC<Props> = ({ onClose }) => {
   const { t } = useTranslation("translation")
 
   const dispatch = useAppDispatch()
@@ -100,8 +100,8 @@ const StoreProductCreator: React.FC <Props> = ({onClose}) => {
       <div className="container mx-auto p-4">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col bg-black shadow-md rounded-lg p-6 border border-gray-100">
-        
+          className="flex flex-col bg-black shadow-md rounded-lg p-6 border border-gray-100"
+        >
           <div className="flex flex-col md:flex-row md:items-start w-full">
             <div className="flex flex-col items-center md:w-1/3">
               <div className="mb-4">
@@ -145,7 +145,6 @@ const StoreProductCreator: React.FC <Props> = ({onClose}) => {
                       src={urlPreviews[index]}
                       alt={`Product Preview ${index + 1}`}
                       className="w-60 h-60 object-cover rounded-md shadow-md"
-                 
                     />
                   )}
                 </div>
@@ -206,12 +205,14 @@ const StoreProductCreator: React.FC <Props> = ({onClose}) => {
                 required
               />
               <button
+                id="addCard"
                 type="submit"
                 className="bg-blue-400 text-white p-2 rounded-md hover:bg-blue-600 transition duration-300"
               >
                 {t("storeProduct.buttonAddCard")}
               </button>
               <button
+                id="closeWindow"
                 onClick={onClose}
                 className="mt-4 bg-yellow-400 text-white p-2 rounded-md hover:bg-yellow-600 transition duration-200"
               >

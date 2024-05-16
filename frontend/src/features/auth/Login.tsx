@@ -99,6 +99,7 @@ const Login: FC = () => {
             </div>
             <div>
               <button
+                id="login"
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-blue-400 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-7"
               >

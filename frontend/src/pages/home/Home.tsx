@@ -11,6 +11,7 @@ const Home: FC = () => {
     { id: "3", url: "", description: "" },
   ])
   const [files, setFiles] = useState<File[]>([])
+  const [isAdmin, setIsAdmin] = useState<boolean>(true);
 
   const handleFileChange =
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,6 +74,7 @@ const Home: FC = () => {
           <div className="relative mb-4">
             <div className="flex flex-col md:flex-row md:items-start w-full">
               <div className="flex flex-col items-center md:w-1/3 relative">
+                
                 <div className="mb-4">
                   <input
                     type="file"
@@ -173,7 +175,7 @@ const Home: FC = () => {
                       src={products[2].url}
                       alt="Product"
                       className="mt-2 max-w-xs absolute top-0 left-0 z-10"
-                      style={{ width: "300px", height: "auto" }}
+                      style={{ width: "0px", height: "auto" }}
                     />
                   )}
                 </div>
@@ -189,9 +191,11 @@ const Home: FC = () => {
             </div>
           </div>
           </div>
-          <button type="submit" className="bg-green-500 text-white p-2 rounded">
-            Submit
-          </button>
+          {isAdmin && (
+              <button type="submit" className="bg-green-500 text-white p-2 rounded mt-4">
+                Submit
+              </button>
+            )}
         </form>
       </div>
     </div>

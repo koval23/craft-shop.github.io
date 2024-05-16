@@ -1,7 +1,7 @@
 import type { FC, FormEvent } from "react"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import styles from "./styles/EmailForm.module.css";
+import styles from "./styles/EmailForm.module.css"
 import { FaArrowRight } from "react-icons/fa"
 
 const EmailForm: FC = () => {
@@ -38,6 +38,7 @@ const EmailForm: FC = () => {
             onChange={e => setEmail(e.target.value)}
           />
           <button
+            id="sendEmail"
             type="submit"
             className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 text-black font-bold py-1 px-2 rounded-tr rounded-br flex items-center justify-center"
             style={{ outline: "none", width: "40px", height: "40px" }}
@@ -51,7 +52,7 @@ const EmailForm: FC = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
 export default EmailForm

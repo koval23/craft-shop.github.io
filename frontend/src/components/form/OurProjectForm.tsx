@@ -1,18 +1,17 @@
 import type React from "react"
 import { useState } from "react"
-import type { WhoWeAreFormData } from "./api/types"
+import type { OurProjectData } from "./api/types"
 import { useTranslation } from "react-i18next"
 
 type Props = {
   onClose: () => void
 }
 
-const WhoWeAreForm: React.FC<Props> = ({ onClose }) => {
+const OurProjectForm: React.FC<Props> = ({ onClose }) => {
   const { t } = useTranslation("translation")
-  const [formData, setFormData] = useState<WhoWeAreFormData>({
+  const [formData, setFormData] = useState<OurProjectData>({
     photos: [],
     description: "",
-    videoLink: "",
   })
 
   const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,15 +34,6 @@ const WhoWeAreForm: React.FC<Props> = ({ onClose }) => {
     }))
   }
 
-  const handleVideoLinkChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setFormData(prevState => ({
-      ...prevState,
-      videoLink: event.target.value,
-    }))
-  }
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     console.log("Form Data:", formData)
@@ -53,13 +43,12 @@ const WhoWeAreForm: React.FC<Props> = ({ onClose }) => {
       formDataToSend.append(`photos[${index}]`, photo)
     })
     formDataToSend.append("description", formData.description)
-    formDataToSend.append("videoLink", formData.videoLink)
     onClose()
   }
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-white mb-8">Who We Are</h1>
+      <h1 className="text-2xl font-bold mb-4 text-white mb-8">Our Projects</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label
@@ -103,18 +92,6 @@ const WhoWeAreForm: React.FC<Props> = ({ onClose }) => {
             rows={4}
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-400 mb-4">
-            {t("whoWeAre.linkToVideo")}
-          </label>
-          <input
-            type="url"
-            value={formData.videoLink}
-            onChange={handleVideoLinkChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3"
-            placeholder="https://www.example.com"
-          />
-        </div>
         <button
           id="addCard"
           type="submit"
@@ -134,4 +111,4 @@ const WhoWeAreForm: React.FC<Props> = ({ onClose }) => {
   )
 }
 
-export default WhoWeAreForm
+export default OurProjectForm

@@ -19,6 +19,7 @@ const Products: FC = () => {
     <>
       <div className={styles.buttonAddNewImage}>
         <button
+          id="addCard"
           onClick={handleAddProductClick}
           className="mt-4 bg-blue-500 text-white p-2 hover:bg-yellow-500 "
         >

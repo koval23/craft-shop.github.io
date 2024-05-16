@@ -50,7 +50,10 @@ const Registration: FC = () => {
       </p>
       <div className="max-w-md mx-auto my-10 p-4">
         <div className={styles.registrationFormContainer}>
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-14">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col space-y-4 mt-14"
+          >
             <input
               type="text"
               name="firstName"
@@ -120,6 +123,7 @@ const Registration: FC = () => {
             </div>
 
             <button
+              id="registration"
               type="submit"
               className="bg-blue-400 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded"
             >

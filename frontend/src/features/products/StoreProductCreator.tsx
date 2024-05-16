@@ -8,12 +8,11 @@ import styles from "./styles/StoreProductCreator.module.css"
 import { useTranslation } from "react-i18next"
 
 type FormElement = HTMLInputElement | HTMLTextAreaElement
+type Props = {
+  onClose: () => void;
+};
 
-const StoreProductCreator: React.FC = ({
-  onClose,
-}: {
-  onClose: () => void
-}) => {
+const StoreProductCreator: React.FC <Props> = ({onClose}) => {
   const { t } = useTranslation("translation")
 
   const dispatch = useAppDispatch()
@@ -101,8 +100,8 @@ const StoreProductCreator: React.FC = ({
       <div className="container mx-auto p-4">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col md:flex-row bg-black shadow-md rounded-lg p-6"
-        >
+          className="flex flex-col bg-black shadow-md rounded-lg p-6 border border-gray-100">
+        
           <div className="flex flex-col md:flex-row md:items-start w-full">
             <div className="flex flex-col items-center md:w-1/3">
               <div className="mb-4">
@@ -120,12 +119,12 @@ const StoreProductCreator: React.FC = ({
                   <img
                     src={urlPreviews[0]}
                     alt="Main Product Preview"
-                    className="w-full h-96 object-cover rounded-md shadow-md"
+                    className="w-full h-116 object-cover rounded-md shadow-md"
                   />
                 )}
               </div>
             </div>
-            <div className="flex flex-col md:w-1/3 md:ml-4 space-y-4">
+            <div className="flex flex-col md:w-1/3 md:ml-12 space-y-4">
               {[1, 2, 3].map(index => (
                 <div key={index} className="flex-1">
                   <input
@@ -145,13 +144,14 @@ const StoreProductCreator: React.FC = ({
                     <img
                       src={urlPreviews[index]}
                       alt={`Product Preview ${index + 1}`}
-                      className="w-full h-32 object-cover rounded-md shadow-md"
+                      className="w-60 h-60 object-cover rounded-md shadow-md"
+                 
                     />
                   )}
                 </div>
               ))}
             </div>
-            <div className="flex flex-col md:w-1/3 md:ml-4 space-y-4">
+            <div className="flex flex-col md:w-1/2 md:ml-4 space-y-4 mt-4">
               <input
                 type="text"
                 name="title"
@@ -207,13 +207,13 @@ const StoreProductCreator: React.FC = ({
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition duration-300"
+                className="bg-blue-400 text-white p-2 rounded-md hover:bg-blue-600 transition duration-300"
               >
                 {t("storeProduct.buttonAddCard")}
               </button>
               <button
                 onClick={onClose}
-                className="mt-4 bg-yellow-500 text-white p-2 rounded-md hover:bg-yellow-600 transition duration-200"
+                className="mt-4 bg-yellow-400 text-white p-2 rounded-md hover:bg-yellow-600 transition duration-200"
               >
                 {t("storeProduct.closeForm")}
               </button>

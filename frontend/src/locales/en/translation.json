@@ -6,7 +6,13 @@
     "contacts": "Contacts",
     "about": "About",
     "registration": "Registration",
-    "login": "Login"
+    "login": "Login",
+    "contactUs" : "Contact Us",
+    "contactInfo" : "Contact Information",
+    "whoWeAre" : "Who We Are",
+    "careers" : "Careers",
+    "ourProject" : "Our Projects",
+    "faq" : "Frequently Asked Questions"
   },
   "footer": {
     "findUsOn": "Find us on",
@@ -83,5 +89,10 @@
     "file" :"File",
     "buttonAddCard" : "Add card",
     "closeForm" : "Close form"
+  },
+  "whoWeAre" : {
+    "uploadPhoto" : "Upload Photo",
+    "addDescription" : "Add Description",
+    "linkToVideo" : "Link to Video"
   }
 }

@@ -1,7 +1,7 @@
 import type { FC, FormEvent } from "react"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import styles from "./EmailForm.module.css"
+import styles from "./styles/EmailForm.module.css";
 import { FaArrowRight } from "react-icons/fa"
 
 const EmailForm: FC = () => {

@@ -6,7 +6,13 @@
     "contacts": "Контакти",
     "about": "Про нас",
     "registration": "Реєстрація",
-    "login": "Увійти"
+    "login": "Увійти",
+    "contactUs" : "Зв'яжіться з нами",
+    "contactInfo" : "Контактна інформація",
+    "whoWeAre" : "Хто ми",
+    "careers" : "Кар'єра",
+    "ourProject" : "Наші проекти",
+    "faq" : "Питання, які часто задаються"
   },
   "footer": {
     "findUsOn": "Знайдіть нас на",
@@ -83,5 +89,10 @@
     "file": "Файл",
     "buttonAddCard" : "Додати картку",
     "closeForm" : "Закрити форму"
+  },
+  "whoWeAre" : {
+    "uploadPhoto" : "Завантажити фото",
+    "addDescription" : "Додати опис",
+    "linkToVideo" : "Посилання на відео"
   }
 }

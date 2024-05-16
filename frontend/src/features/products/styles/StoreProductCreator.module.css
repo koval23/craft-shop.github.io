@@ -2,8 +2,7 @@
   background-color: black;
 }
 .containerAddInfoImage input,
-textarea,
-button {
+textarea {
   border: none;
   height: 50px;
   border-bottom: 2px solid rgb(254, 251, 251);
@@ -12,7 +11,6 @@ button {
 
 .addImage {
   padding: 6px 12px;
-  min-height: 80px;
   cursor: pointer;
   background-color: #e2f7c5;
   color: rgb(75, 73, 73);

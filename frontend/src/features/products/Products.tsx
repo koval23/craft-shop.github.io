@@ -22,7 +22,7 @@ const Products: FC = () => {
           onClick={handleAddProductClick}
           className="mt-4 bg-blue-500 text-white p-2 hover:bg-yellow-500 "
         >
-           {t("storeProduct.buttonAddCard")}
+          {t("storeProduct.buttonAddCard")}
         </button>
         {isAddingProduct && (
           <StoreProductCreator onClose={handleCloseProductCreator} />

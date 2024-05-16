@@ -6,7 +6,13 @@
     "contacts": "Kontakte",
     "about": "Über uns",
     "registration": "Registrierung",
-    "login": "Anmeldung"
+    "login": "Anmeldung",
+    "contactUs" : "Kontaktieren Sie uns",
+    "contactInfo" : "Kontaktinformationen",
+    "whoWeAre" : "Wer wir sind",
+    "careers" : "Karriere",
+    "ourProject" : "Unsere Projekte",
+    "faq" : "Häufig gestellte Fragen"
   },
   "footer": {
     "findUsOn": "Finden Sie uns auf",
@@ -83,5 +89,10 @@
     "file" :"Datei",
     "buttonAddCard" : "Karte hinzufügen",
     "closeForm" : "Formular schließen"
+  },
+  "whoWeAre" : {
+    "uploadPhoto" : "Foto hochladen",
+    "addDescription" : "Beschreibung hinzufügen",
+    "linkToVideo" : "Link zum Video"
   }
 }

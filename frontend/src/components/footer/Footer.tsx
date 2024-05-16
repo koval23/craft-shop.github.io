@@ -16,29 +16,29 @@ const Footer: FC = () => {
         <div className={styles.socialLinks}>
           <h3>{t("footer.findUsOn")}</h3>
           <p>
-            <a target="_blank" href="https://www.twitter" rel="noreferrer">
+            <a target="_blank" href="https://www.twitter.com" rel="noreferrer">
               Twitter (X)
             </a>
-            <a target="_blank" href="https://www.instagram" rel="noreferrer">
+            <a target="_blank" href="https://www.instagram.com" rel="noreferrer">
               Instagram
             </a>
             <a
               target="_blank"
-              href="https://www.pinterest.com/profile "
+              href="https://www.pinterest.com "
               rel="noreferrer"
             >
               Pinterest
             </a>
             <a
               target="_blank"
-              href="https://www.facebook.com/profile "
+              href="https://www.facebook.com "
               rel="noreferrer"
             >
               Facebook
             </a>
             <a
               target="_blank"
-              href="https://www.tik-tok.com/profile "
+              href="https://www.tiktok.com "
               rel="noreferrer"
             >
               Tik Tok

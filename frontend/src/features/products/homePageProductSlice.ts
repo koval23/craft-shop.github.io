@@ -65,5 +65,3 @@ export const homePageProductSlice = createAppSlice({
 
 export const { addProduct, getStoreProducts } = homePageProductSlice.actions
 export const { selectProduct } = homePageProductSlice.selectors
-
-

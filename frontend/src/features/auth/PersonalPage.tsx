@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { deleteUser, selectUser, updateUser } from "./userSlice"
 import type { User } from "./types/PersonalPageData"
 import { toast } from "react-toastify"
+import logo from "../../assets/logo.png"
 
 const PersonalPage: FC = () => {
   const today = new Date().toISOString().split("T")[0]
@@ -16,10 +17,10 @@ const PersonalPage: FC = () => {
 
   const [formData, setFormData] = useState<User>({
     id: 0,
-    firstName: "",
+    name: "",
     lastName: "",
     phone: "",
-    birthDate: "",
+    birthdate: "",
     street: "",
     city: "",
     country: "",
@@ -65,34 +66,16 @@ const PersonalPage: FC = () => {
     <div className={styles.personalPageContainer}>
       <div className="container mx-auto px-4">
         <div className="text-right">
-          <div className={styles.headerUpdateAccount}>
-            <h2 className="text-lg font-semibold mt-6">
-              {t("personalPage.viewEditAccount")}
-            </h2>
-            <div>
-              <button
-                type="button"
-                onClick={handleDeleteUser}
-                className="px-6 py-2 border rounded text-gray-600 mr-2"
-              >
-                {t("personalPage.reset")}
-              </button>
-              <button
-                type="submit"
-                form="updateForm"
-                className="px-4 py-2 border rounded bg-blue-500 text-white"
-              >
-                {t("personalPage.update")}
-              </button>
-            </div>
-          </div>
+          <div className={styles.headerUpdateAccount}></div>
         </div>
-        <div className="mt-4 mb-6">
-          <h3 className="text-xl font-bold mb-4">
+        <div className="mt-9 mb-6">
+          <h3 className="text-xl font-bold mb-4 text-white">
             {t("personalPage.personalData")}
           </h3>
-          <p className="text-xl mb-3">{t("personalPage.updatePersonalData")}</p>
-          <p>
+          <p className="text-xl mb-3 text-white">
+            {t("personalPage.updatePersonalData")}
+          </p>
+          <p className="text-xl mb-3 text-white">
             {t("personalPage.emailHeader")} $`{formData.phone}{" "}
             {t("personalPage.emailFooter")}
           </p>
@@ -104,7 +87,7 @@ const PersonalPage: FC = () => {
               type="text"
               name="firstName"
               placeholder={t("personalPage.name")}
-              value={formData.firstName}
+              value={formData.name}
               onChange={handleChange}
               className="w-full px-3 py-2 border rounded "
             />
@@ -147,7 +130,7 @@ const PersonalPage: FC = () => {
               type="date"
               name="birthDate"
               placeholder={t("personalPage.dataOfBirth")}
-              value={formData.birthDate}
+              value={formData.birthdate}
               onChange={handleChange}
               className="w-full px-3 py-2 border rounded"
               max={today}
@@ -175,20 +158,25 @@ const PersonalPage: FC = () => {
 
         <div className="mt-4 text-right">
           <button
+            id="resetPersonalPageButton"
             type="button"
             onClick={handleDeleteUser}
-            className="px-6 py-2 border rounded text-gray-600 mr-2"
+            className="px-6 py-2 rounded mr-2 bg-blue-400 hover:bg-yellow-400"
           >
             {t("personalPage.reset")}
           </button>
           <button
+            id="updatePersonalPageButton"
             type="submit"
             form="updateForm"
-            className="px-4 py-2 border rounded bg-blue-500 text-white"
+            className="px-4 py-2 rounded bg-blue-500 text-white bg-yellow-400 hover:bg-blue-400"
           >
             {t("personalPage.update")}
           </button>
         </div>
+      </div>
+      <div className={styles.logoPersonalPage}>
+        <img src={logo} alt="Logo" className="max-w-full" />
       </div>
     </div>
   )

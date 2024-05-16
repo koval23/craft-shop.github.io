@@ -56,3 +56,19 @@ export async function deletePersonalPageUser(): Promise<void> {
   }
   return res.json()
 }
+
+export async function activateAccountUser(validationCode: string): Promise<void> {
+  const res = await fetch("/api/activate", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ validationCode }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to activate account");
+  }
+
+  return res.json();
+}

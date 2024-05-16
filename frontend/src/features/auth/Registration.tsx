@@ -2,8 +2,10 @@ import type { FC } from "react"
 import type React from "react"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import styles from './styles/Registration.module.css';
-import type { RegistrationData } from "./types/RegistrationData";
+import styles from "./styles/Registration.module.css"
+import type { RegistrationData } from "./types/RegistrationData"
+import { toast } from "react-toastify"
+import logo from "../../assets/logo.png"
 
 const Registration: FC = () => {
   const { t } = useTranslation("translation")
@@ -38,15 +40,20 @@ const Registration: FC = () => {
 
     const { confirmPassword, ...registrationData } = formData
     console.log("Registration Data:", registrationData)
-    alert("Registration successful!")
+    toast.info(t("toasty.login"))
   }
 
   return (
     <div className={styles.bigContainerRegistration}>
-      <p>{t("registration.registration")}</p>
-      <div className="max-w-md mx-auto my-10 p-4 border rounded shadow-lg">
+      <p className="mt-6 text-center text-3xl text-white font-extrabold text-gray-900">
+        {t("registration.registration")}
+      </p>
+      <div className="max-w-md mx-auto my-10 p-4">
         <div className={styles.registrationFormContainer}>
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col space-y-4 mt-14"
+          >
             <input
               type="text"
               name="firstName"
@@ -104,24 +111,28 @@ const Registration: FC = () => {
               />
               <label
                 htmlFor="togglePassword"
-                className="text-sm text-gray-700 select-none"
+                className="text-sm text-white select-none"
               >
                 {t("registration.showPassword")}
               </label>
             </div>
             <div className={styles.requiredFieldsText}>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-300">
                 {t("registration.requiredFields")}
               </p>
             </div>
 
             <button
+              id="registration"
               type="submit"
-              className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded  "
+              className="bg-blue-400 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded"
             >
               {t("contacts.send")}
             </button>
           </form>
+          <div className={styles.logoRegistration}>
+            <img src={logo} alt="Logo" className="max-w-full" />
+          </div>
         </div>
       </div>
     </div>

@@ -8,6 +8,9 @@
   position: relative;
   box-sizing: border-box;
 }
+.headerContainer p{
+  border-bottom: 1px solid black;
+ }
 
 .languageIcon {
   position: absolute;
@@ -22,7 +25,6 @@
   position: fixed;
   top: 0 px;
   right: 0;
-
   z-index: 1000;
   color: rgb(24, 24, 23);
   cursor: pointer;

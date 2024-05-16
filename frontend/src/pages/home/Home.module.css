@@ -1,0 +1,10 @@
+.homeContainer {
+    background-color: black;
+    height: 100vh;
+    top: 50px;
+}
+
+.firstContainer {
+    height: 400px;
+    max-width: 1200px;
+}

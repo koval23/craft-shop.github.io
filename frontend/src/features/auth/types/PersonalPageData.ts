@@ -1,9 +1,9 @@
 export interface User {
   id: number
-  firstName: string
+  name: string
   lastName: string
   phone: string
-  birthDate: string
+  birthdate: string
   street: string
   city: string
   country: string

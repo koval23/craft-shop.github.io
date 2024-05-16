@@ -8,16 +8,16 @@ import {
   FaPinterest,
   FaTiktok,
   FaTwitter,
-} from "react-icons/fa";
-import styles from './Contacts.module.css';
-import { useAppDispatch } from "../../app/hooks";
-import { toast } from "react-toastify";
-import { submitForm } from "./contactsSlice";
-
+} from "react-icons/fa"
+import styles from "./Contacts.module.css"
+import { useAppDispatch } from "../../app/hooks"
+import { toast } from "react-toastify"
+import { submitForm } from "./contactsSlice"
+import logo from "../../assets/logo.png"
 
 const Contacts: FC = () => {
-  const { t } = useTranslation("translation");
-  const dispatch = useAppDispatch();
+  const { t } = useTranslation("translation")
+  const dispatch = useAppDispatch()
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -50,21 +50,19 @@ const Contacts: FC = () => {
       }
       console.log("Contacts: ", formData)
       dispatch(submitForm(formData))
-      .unwrap()
-      .then(() => {
-        toast.success(t('contacts.thankQuestion'));
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          question: "",
+        .unwrap()
+        .then(() => {
+          toast.success(t("contacts.thankQuestion"))
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            question: "",
+          })
         })
-      })
-      .catch(() => {
-        toast.error(t("toasty.noUpdatedContact"));
-      });
-  
-     
+        .catch(() => {
+          toast.error(t("toasty.noUpdatedContact"))
+        })
     } catch (error) {
       alert(error)
     }
@@ -75,14 +73,14 @@ const Contacts: FC = () => {
       <div className={styles.contactsContainer}>
         <div className={styles.formContainer}>
           <div className={styles.textContainer}>
-            <h1 className="text-lg font-semibold text-center mb-4">
+            <h1 className="text-lg font-semibold text-center mb-4 text-white">
               {t("contacts.feedbackForm")}
             </h1>
           </div>
           <div className={styles.inputFormContainer}>
-            <div className="max-w-md mx-auto my-10 p-4 ">
+            <div className="max-w-md mx-auto my-10 p-4 bg-black">
               <form onSubmit={handleSubmit}>
-                <div className="flex flex-col space-y-3">
+                <div className="flex flex-col space-y-3 text-white">
                   <p>
                     {t("contacts.name")} {"*"}
                   </p>
@@ -128,7 +126,7 @@ const Contacts: FC = () => {
                   />
                   <button
                     type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-blue-400 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded"
                   >
                     {t("contacts.send")}
                   </button>
@@ -140,14 +138,40 @@ const Contacts: FC = () => {
       </div>
       <div className={styles.socialLinkContainer}>
         <h2>{t("contacts.ourSocialMedia")}</h2>
-        <FaInstagram />
-        <FaFacebook />
-        <FaTwitter />
-        <FaPinterest />
-        <FaTiktok />
+
+        <a target="_blank" href="https://www.twitter.com" rel="noreferrer">
+          <FaTwitter />
+        </a>
+        <a target="_blank" href="https://www.instagram.com" rel="noreferrer">
+          <FaInstagram />
+        </a>
+        <a
+          target="_blank"
+          href="https://www.pinterest.com "
+          rel="noreferrer"
+        >
+          <FaPinterest />
+        </a>
+        <a
+          target="_blank"
+          href="https://www.facebook.com "
+          rel="noreferrer"
+        >
+          <FaFacebook />
+        </a>
+        <a
+          target="_blank"
+          href="https://www.tiktok.com"
+          rel="noreferrer"
+        >
+          <FaTiktok />
+        </a>
       </div>{" "}
+      <div className={styles.logoRegistration}>
+        <img src={logo} alt="Logo" className="max-w-full" />
+      </div>
     </div>
   )
 }
 
-export default Contacts;
+export default Contacts

@@ -5,9 +5,11 @@ import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
 import { BrowserRouter } from "react-router-dom"
-import { I18nextProvider } from "react-i18next"
-import i18next from "./i18next.ts/i18next"
-import { ToastContainer } from "react-toastify"
+import { I18nextProvider } from "react-i18next";
+import i18next from "./i18next.ts/i18next";
+import { ToastContainer } from "react-toastify";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const container = document.getElementById("root")
 

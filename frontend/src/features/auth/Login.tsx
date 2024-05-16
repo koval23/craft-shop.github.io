@@ -2,21 +2,21 @@ import type { FC } from "react"
 import type React from "react"
 import { useState } from "react"
 import type { LoginData } from "./types/LoginData"
-import styles from './styles/Login.module.css';
+import styles from "./styles/Login.module.css"
 import { useTranslation } from "react-i18next"
-import { login } from "./userSlice";
-import { useAppDispatch } from "../../app/hooks";
-import { toast } from "react-toastify";
+import { login } from "./userSlice"
+import { useAppDispatch } from "../../app/hooks"
+import { toast } from "react-toastify"
 
 const Login: FC = () => {
   const { t } = useTranslation("translation")
   const [formData, setFormData] = useState<LoginData>({
     email: "",
     password: "",
-  });
+  })
 
-  const [showPassword, setShowPassword] = useState(false);
-  const dispatch = useAppDispatch();
+  const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useAppDispatch()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -24,35 +24,35 @@ const Login: FC = () => {
       ...prevState,
       [name]: value,
     }))
-  };
+  }
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword)
-  };
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log("Login:", formData)
     dispatch(login(formData))
-    .unwrap()
-    .then(() => {
-      toast.info(t("toasty.login"));
-    })
-    .catch(() => {
-      toast.error(t("toasty.noUpdatedContact"));
-    });
-};
+      .unwrap()
+      .then(() => {
+        toast.info(t("toasty.login"))
+      })
+      .catch(() => {
+        toast.error(t("toasty.noUpdatedContact"))
+      })
+  }
 
   return (
     <div className={styles.loginFormContainer}>
-      <div className="flex items-center justify-center bg-gray-50 px-4">
+      <div className="flex items-center justify-center bg-black px-4">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl text-white font-extrabold text-gray-900">
               {t("registration.signToAccount")}
             </h2>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <form className="mt-8 space-y-6 bg-black" onSubmit={handleSubmit}>
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -80,7 +80,7 @@ const Login: FC = () => {
                   value={formData.password}
                   onChange={handleChange}
                 />
-                <div className="mt-2 flex items-center">
+                <div className="mt-2 flex items-center text-white">
                   <input
                     type="checkbox"
                     id="togglePassword"
@@ -90,7 +90,7 @@ const Login: FC = () => {
                   />
                   <label
                     htmlFor="togglePassword"
-                    className="text-sm text-gray-700 select-none"
+                    className="text-sm text-white select-none"
                   >
                     {t("registration.showPassword")}
                   </label>
@@ -99,8 +99,9 @@ const Login: FC = () => {
             </div>
             <div>
               <button
+                id="login"
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-blue-400 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-7"
               >
                 {t("registration.signIn")}
               </button>

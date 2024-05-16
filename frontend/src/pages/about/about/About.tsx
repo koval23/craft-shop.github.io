@@ -1,23 +1,22 @@
 import { useState, type FC } from "react"
-import StoreProductCreator from "./StoreProductCreator"
-import styles from "./styles/Products.module.css"
 import { useTranslation } from "react-i18next"
+import styles from "./About.module.css"
+import WhoWeAreForm from "../../../components/form/WhoWeAreForm"
 
-const Products: FC = () => {
-  const [isAddingProduct, setIsAddingProduct] = useState(false)
+const About: FC = () => {
+  const [isAddingWhoWeAre, setIsAddingWhoWeAre] = useState(false)
   const { t } = useTranslation("translation")
 
   const handleAddProductClick = () => {
-    setIsAddingProduct(true)
+    setIsAddingWhoWeAre(true)
   }
 
   const handleCloseProductCreator = () => {
-    setIsAddingProduct(false)
+    setIsAddingWhoWeAre(false)
   }
-
   return (
     <>
-      <div className={styles.buttonAddNewImage}>
+      <div className={styles.buttonAddNewInfoCard}>
         <button
           id="addCard"
           onClick={handleAddProductClick}
@@ -25,12 +24,12 @@ const Products: FC = () => {
         >
           {t("storeProduct.buttonAddCard")}
         </button>
-        {isAddingProduct && (
-          <StoreProductCreator onClose={handleCloseProductCreator} />
+        {isAddingWhoWeAre && (
+          <WhoWeAreForm onClose={handleCloseProductCreator} />
         )}
       </div>
     </>
   )
 }
 
-export default Products
+export default About

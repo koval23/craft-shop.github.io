@@ -20,7 +20,7 @@ const PersonalPage: FC = () => {
     name: "",
     lastName: "",
     phone: "",
-    birthdate: "",
+    birthdate: '1990-01-01',
     street: "",
     city: "",
     country: "",
@@ -85,7 +85,7 @@ const PersonalPage: FC = () => {
           <div className="space-y-4 w-1/2 pr-2 mt-6">
             <input
               type="text"
-              name="firstName"
+              name="name"
               placeholder={t("personalPage.name")}
               value={formData.name}
               onChange={handleChange}
@@ -128,7 +128,7 @@ const PersonalPage: FC = () => {
             />
             <input
               type="date"
-              name="birthDate"
+              name="birthdate"
               placeholder={t("personalPage.dataOfBirth")}
               value={formData.birthdate}
               onChange={handleChange}

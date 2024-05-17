@@ -1,4 +1,3 @@
-import type { FC } from "react"
 import type React from "react"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
@@ -6,13 +5,16 @@ import styles from "./styles/Registration.module.css"
 import type { RegistrationData } from "./types/RegistrationData"
 import { toast } from "react-toastify"
 import logo from "../../assets/logo.png"
+import { useAppDispatch } from "../../app/hooks"
+import { registration } from "./userSlice"
 
-const Registration: FC = () => {
+const Registration: React.FC = () => {
   const { t } = useTranslation("translation")
   const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useAppDispatch()
 
   const [formData, setFormData] = useState<RegistrationData>({
-    firstName: "",
+    name: "",
     lastName: "",
     email: "",
     password: "",
@@ -37,10 +39,16 @@ const Registration: FC = () => {
       alert(t("registration.passwordMismatch"))
       return
     }
-
     const { confirmPassword, ...registrationData } = formData
     console.log("Registration Data:", registrationData)
-    toast.info(t("toasty.login"))
+    dispatch(registration(formData))
+      .unwrap()
+      .then(() => {
+        toast.info(t("toasty.login"))
+      })
+      .catch(() => {
+        toast.error(t("toasty.noUpdatedContact"))
+      })
   }
 
   return (
@@ -56,9 +64,9 @@ const Registration: FC = () => {
           >
             <input
               type="text"
-              name="firstName"
+              name="name"
               placeholder={`${t("contacts.name")} *`}
-              value={formData.firstName}
+              value={formData.name}
               onChange={handleChange}
               required
               className="px-4 py-2 border-none border-b-2 border-black focus:border-blue-500 focus:outline-none w-full"

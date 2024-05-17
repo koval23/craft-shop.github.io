@@ -83,7 +83,7 @@ export const userSlice = createAppSlice({
       },
     ),
     deleteUser: create.asyncThunk(
-      async _ => {
+      async(_, thunkApi )=> {
         const response = await deletePersonalPageUser()
         return response
       },

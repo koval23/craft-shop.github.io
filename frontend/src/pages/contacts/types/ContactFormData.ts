@@ -1,12 +1,12 @@
 export interface ContactFormData {
-  firstName: string
+  name: string
   lastName: string
   email: string
   question: string
 }
 
 export interface ContactFormState {
-  formData: ContactFormData
+  contactsData: ContactFormData | null
   loading: boolean
   error: string | null
 }

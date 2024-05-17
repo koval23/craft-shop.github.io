@@ -12,15 +12,15 @@ import {
 import styles from "./Contacts.module.css"
 import { useAppDispatch } from "../../app/hooks"
 import { toast } from "react-toastify"
-import { submitForm } from "./contactsSlice"
 import logo from "../../assets/logo.png"
+import { sendContacts } from "./contactsSlice"
 
 const Contacts: FC = () => {
   const { t } = useTranslation("translation")
   const dispatch = useAppDispatch()
 
   const [formData, setFormData] = useState({
-    firstName: "",
+    name: "",
     lastName: "",
     email: "",
     question: "",
@@ -40,7 +40,7 @@ const Contacts: FC = () => {
     e.preventDefault()
     try {
       if (
-        !formData.firstName ||
+        !formData.name ||
         !formData.lastName ||
         !formData.email ||
         !formData.question
@@ -49,12 +49,12 @@ const Contacts: FC = () => {
         return
       }
       console.log("Contacts: ", formData)
-      dispatch(submitForm(formData))
+      dispatch(sendContacts(formData))
         .unwrap()
         .then(() => {
           toast.success(t("contacts.thankQuestion"))
           setFormData({
-            firstName: "",
+            name: "",
             lastName: "",
             email: "",
             question: "",
@@ -87,7 +87,7 @@ const Contacts: FC = () => {
                   <input
                     type="text"
                     name="firstName"
-                    value={formData.firstName}
+                    value={formData.name}
                     onChange={handleChange}
                     required
                     className="px-4 py-2 border border-black rounded w-full pl-2"

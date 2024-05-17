@@ -10,12 +10,12 @@ export async function personalPageUser(formData: User): Promise<User> {
     },
     body: JSON.stringify(formData),
   })
-  if (!res.ok) {
-    throw new Error("Failed to update user")
-  }
-  return res.json()
+  if (res.status >= 400) {
+		const { message }: { message: string } = await res.json();
+		throw new Error(message);
+	}
+	return res.json();
 }
-
 export async function loginUser(formData: LoginData): Promise<User> {
   const res = await fetch("api/user", {
     method: "POST",
@@ -24,10 +24,25 @@ export async function loginUser(formData: LoginData): Promise<User> {
     },
     body: JSON.stringify(formData),
   })
-  if (!res.ok) {
-    throw new Error("Failed to update user")
-  }
-  return res.json()
+  if (res.status >= 400) {
+		const { message }: { message: string } = await res.json();
+		throw new Error(message);
+	}
+	return res.json();
+}
+
+export async function user(): Promise<{
+	id: number;
+  name: string;
+	email: string;
+	role: string;
+}> {
+	const res = await fetch('/api/user/');
+	if (res.status >= 400) {
+		const { message }: { message: string } = await res.json();
+		throw new Error(message);
+	}
+	return res.json();
 }
 
 export async function registerUser(formData: RegistrationData): Promise<User> {
@@ -38,10 +53,18 @@ export async function registerUser(formData: RegistrationData): Promise<User> {
     },
     body: JSON.stringify(formData),
   })
-  if (!res.ok) {
-    throw new Error("Failed to update user")
-  }
-  return res.json()
+  interface Error {
+		message: string;
+		field: string;
+		rejectedValue: string;
+	}
+  if (res.status >= 400) {
+		const { errors }: { errors: Error[] } = await res.json();
+		errors.forEach((err) => {
+			throw new Error(`${err.field} ${err.rejectedValue} ${err.message}`);
+		});
+	}
+	return res.json();
 }
 
 export async function deletePersonalPageUser(): Promise<void> {
@@ -57,7 +80,7 @@ export async function deletePersonalPageUser(): Promise<void> {
   return res.json()
 }
 
-export async function activateAccountUser(validationCode: string): Promise<void> {
+export async function activateAccountUser(validationCode: string): Promise<User> {
   const res = await fetch("/api/activate", {
     method: "PUT",
     headers: {
@@ -65,10 +88,16 @@ export async function activateAccountUser(validationCode: string): Promise<void>
     },
     body: JSON.stringify({ validationCode }),
   });
-
-  if (!res.ok) {
-    throw new Error("Failed to activate account");
-  }
-
-  return res.json();
+  interface Error {
+		message: string;
+		field: string;
+		rejectedValue: string;
+	}
+  if (res.status >= 400) {
+		const { errors }: { errors: Error[] } = await res.json();
+		errors.forEach((err) => {
+			throw new Error(`${err.field} ${err.rejectedValue} ${err.message}`);
+		});
+	}
+	return res.json();
 }

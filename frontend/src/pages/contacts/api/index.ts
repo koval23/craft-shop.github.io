@@ -11,7 +11,9 @@ export async function submitContactForm(
     body: JSON.stringify(formData),
   })
 
-  if (!res.ok) {
-    throw new Error("Failed to submit contact form")
-  }
+  if (res.status >= 400) {
+		const { message }: { message: string } = await res.json();
+		throw new Error(message);
+	}
+	return res.json();
 }

@@ -17,7 +17,7 @@ const ActivationPage: React.FC = () => {
 
   useEffect(() => {
     if (validationCode) {
-      dispatch(activateAccount( validationCode ))
+      dispatch(activateAccount({ validationCode} ))
         .then(() => {
           toast.success(t('registration.registeredSuccessfully'));
           setTimeout(() => {
